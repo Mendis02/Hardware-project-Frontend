@@ -1,41 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Map from './Components/Map';
 
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
-
-const libraries = ["places"];
-const mapContainerStyle = {
-  width: '100vw',
-  height: '100vh',
-};
-const center = {
-  lat: 12,
-  lng: 112,
-};
-
-function Map() {
-  return (
-    <GoogleMap
-      mapContainerStyle={mapContainerStyle}
-      zoom={10}
-      center={center}
-    />
-  );
+function App() {
+    return (
+        <div style={{ height: '100vh' }}>
+            <h1>My Map Application</h1>
+            <Map />
+        </div>
+    );
 }
 
-export default function App() {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "YOUR_API_KEY_HERE",
-    libraries,
-  });
-
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading Maps";
-
-  return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Map />
-    </div>
-  );
-}
+export default App;
